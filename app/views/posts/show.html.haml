@@ -5,6 +5,9 @@
 %p= @post.description
 %p= @post.user.name
 
+# comment
+  %h2.comment_count = pluraliza(@post.comments.count)
+
 
 = link_to "EDIT", edit_post_path(@post)
 = link_to "DELETE", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }
