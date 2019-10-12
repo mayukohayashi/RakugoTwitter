@@ -45,7 +45,7 @@ before_action :authenticate_user!, except: [:index, :show]
     end
 
     def post_params
-      params.require(:post).permit(:title, :name, :link, :description)
+      params.require(:post).permit(:title, :name, :link, :description, :image)
     end
 
 end
