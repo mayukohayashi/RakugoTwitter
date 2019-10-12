@@ -1,0 +1,9 @@
+= simple_form_for @post do |f|
+  = f.input :title
+  = f.input :name
+  = f.input :link
+  = f.input :description
+
+  = f.button :submit
+
+= link_to "Back to HOME", root_path
