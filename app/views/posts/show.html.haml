@@ -4,5 +4,5 @@
 %p= @post.description
 
 = link_to "EDIT", edit_post_path(@post)
-= link_to "DELETE", post_path(@post), method: :delete, data: {confirm: "Are you sure?"}
+= link_to "DELETE", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }
 = link_to "HOME", root_path
