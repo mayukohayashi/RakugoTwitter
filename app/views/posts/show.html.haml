@@ -5,6 +5,14 @@
 %p= @post.description
 %p= @post.user.name
 
+#comment
+  %h2.comment_count= pluralize(@post.comments.count, "Comment")
+  - @comments.each do |comment|
+    .comment
+      %p.username= comment.user.name
+      %p.comment= comment.content
+
+  = render 'comments/form'
 
 = link_to "EDIT", edit_post_path(@post)
 = link_to "DELETE", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }
