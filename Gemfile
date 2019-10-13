@@ -48,7 +48,8 @@ gem 'devise', '~> 4.7', '>= 4.7.1'
 # Easy upload management for ActiveRecord
 gem 'paperclip', '~> 6.1'
 
-
+# Rails gem to allowing records to be votable
+gem 'acts_as_votable', '~> 0.12.1'
 
 
 group :development, :test do
