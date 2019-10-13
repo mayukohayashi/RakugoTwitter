@@ -51,6 +51,8 @@ gem 'paperclip', '~> 6.1'
 # Rails gem to allowing records to be votable
 gem 'acts_as_votable', '~> 0.12.1'
 
+# add font awesome
+gem "font-awesome-rails"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
