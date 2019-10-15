@@ -1,40 +1,21 @@
-FROM ruby:2.6.3-alpine3.10
+FROM ruby:2.5.1
 
 ENV APP_ROOT /usr/src/projeccts/RakugoTwitter
 WORKDIR $APP_ROOT
 
-RUN apk update && \
-    apk add --no-cache \
-    curl-dev \
-    gcc \
-    g++ \
-    imagemagick6-dev \
-    libxml2-dev \
-    libc-dev \
-    mariadb-dev \
-    nodejs \
-    make \
-    tzdata \
-    vim \
-    yarn && \
-    rm -rf /usr/local/bundle/cache/* \
-    /usr/local/share/.cache/* \
-    /var/cache/* \
-    /tmp/* \
-    /usr/lib/mysqld* \
-    /usr/bin/mysql*
+RUN apt-get update -qq && \
+    apt-get install -y build-essential \
+                       libpq-dev \
+                       nodejs
 
-COPY Gemfile $APP_ROOT
-COPY Gemfile.lock $APP_ROOT
 
-RUN \
-  echo 'gem: --no-document' >> ~/.gemrc && \
-  cp ~/.gemrc /etc/gemrc && \
-  chmod uog+r /etc/gemrc && \
-  bundle config --global jobs 4 && \
-  bundle install && \
-  rm -rf ~/.gem
 
-COPY . $APP_ROOT
+# ホスト側（ローカル）のGemfileを追加する（ローカルのGemfileは【３】で作成）
+ADD ./Gemfile $APP_ROOT/Gemfile
+ADD ./Gemfile.lock $APP_ROOT/Gemfile.lock
+
+# Gemfileのbundle install
+RUN bundle install
+ADD . $APP_ROOT
 
 EXPOSE  3000
