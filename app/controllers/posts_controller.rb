@@ -18,6 +18,8 @@ before_action :authenticate_user!, except: [:index, :show]
   def create
     @post = current_user.posts.build(post_params)
 
+    # @post.save ? redirect_to @post : render 'new'
+
     if @post.save
       redirect_to @post
     else
